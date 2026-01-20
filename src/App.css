@@ -1,0 +1,132 @@
+:root {
+  font-family: 'Arial Black', 'Impact', 'Anton', sans-serif;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  transition: background-color 0.1s;
+  outline: none;
+  /* Remove default, add custom below */
+}
+
+.container:focus-visible {
+  box-shadow: inset 0 0 0 4px #fff;
+}
+
+/* Flash background subtly when super loud? */
+.container.active {
+  /* Optional: subtle red backlight */
+  background: radial-gradient(circle at center, #110000 0%, #000 70%);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  position: relative;
+  width: 100%;
+}
+
+.text {
+  font-size: 25vw;
+  /* Massive */
+  line-height: 0.8;
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  transform-origin: center center;
+  will-change: transform, text-shadow;
+  /* Default state */
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.container.active .text {
+  opacity: 1;
+  /* Fully visible when active */
+}
+
+.hint {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #666;
+  margin-top: 20px;
+  position: relative;
+  bottom: auto;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #333;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  position: absolute;
+  top: -40px;
+  /* Above text */
+}
+
+.status-dot.pulse {
+  background-color: #ff0000;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+/* Controls - Fixed to Viewport */
+.controls {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 100;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.controls:hover {
+  opacity: 1;
+}
+
+.crazy-btn {
+  background: transparent;
+  border: 1px solid #888;
+  color: #888;
+  padding: 5px 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.crazy-btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.crazy-btn.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
